@@ -1,14 +1,26 @@
-#include <stdio.h>
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/03 15:02:43 by gafreire          #+#    #+#             */
+/*   Updated: 2025/06/03 15:44:34 by gafreire         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	main(int argc, char *argv[])
+#include "philosopher.h"
+
+void	simple_philo(char *philo,char *die)
 {
-	if (argc == 5)
-		printf("%s\n", "Cuatros argumentos");
-	else if (argc == 6)
-		printf("%s\n", "Cinco argumentos");
-	else
-		printf("Error\n");
-	return (0);
+	usleep(2000000);
+	printf("%s\n", "Cuatros argumentos");
+	printf("%s\n", "Cuatros argumentos");
+	printf("Number of philosophers");
 }
-// cambiar segundos a micro
+void	advanced_philo(void)
+{
+	usleep(2000000);
+	printf("%s\n", "Cinco argumentos");
+}
