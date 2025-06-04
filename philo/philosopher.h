@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:38:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/03 15:42:10 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:49:30 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <pthread.h>
 # include <stdio.h>
+# include <sys/time.h>
 # include <unistd.h>
 
 typedef struct s_statistics
@@ -49,6 +50,6 @@ typedef struct s_philosopher
 	t_statistics	*statistic;
 }					t_philosopher;
 
-void				simple_philo(char *philo,char *die);
+void				simple_philo(char *philo, char *die);
 void				advanced_philo(void);
 #endif
