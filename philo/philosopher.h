@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:38:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/05 13:09:53 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/05 16:41:55 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ typedef struct s_philosopher
 
 void				simple_philo(unsigned int philo, unsigned int die,
 						unsigned int eat, unsigned int sleep);
-void				advanced_philo(void);
+void				advanced_philo(unsigned int philo, unsigned int die,
+						unsigned int eat, unsigned int sleep,
+						unsigned int must_eat);
 
 // utils
 unsigned int		ft_atoui(char *str);
