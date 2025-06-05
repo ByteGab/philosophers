@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:38:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/04 12:49:30 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:09:53 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <pthread.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
 
@@ -39,7 +40,7 @@ typedef struct s_philosopher
 {
 	int				id;
 	pthread_t		thread;
-	// son punteros porque apuntan aos elementos especificos do array de forks (chequear)
+	// son punteiros porque apuntan aos elementos especificos do array de forks (chequear)
 	pthread_mutex_t	*fork_left;
 	pthread_mutex_t	*fork_right;
 	// a ultima vez que comeu (en microsegundos)
@@ -50,6 +51,10 @@ typedef struct s_philosopher
 	t_statistics	*statistic;
 }					t_philosopher;
 
-void				simple_philo(char *philo, char *die);
+void				simple_philo(unsigned int philo, unsigned int die,
+						unsigned int eat, unsigned int sleep);
 void				advanced_philo(void);
+
+// utils
+unsigned int		ft_atoui(char *str);
 #endif
