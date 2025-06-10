@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:02:43 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/05 16:42:40 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:16:26 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ void	simple_philo(unsigned int philo, unsigned int die, unsigned int eat,
 		unsigned int sleep)
 {
 	struct timeval	current_time;
+	if (philo == 0 || die  == 0 || eat == 0 || sleep == 0)
+		printf("Os argumetos deberian ser maiores que cero\n");
 
+	// deber ter menos de cen numeros os filos?
+	// deber ter menos de doscentos numeros as demais variables?
 	usleep(2000000);
 	printf("%s\n", "Cuatros argumentos");
 	printf("Number of philosophers\n");
@@ -33,7 +37,8 @@ void	advanced_philo(unsigned int philo, unsigned int die, unsigned int eat,
 		unsigned int sleep, unsigned int must_eat)
 {
 	struct timeval current_time;
-
+	if (philo == 0 || die  == 0 || eat == 0 || sleep == 0 || must_eat == 0)
+		printf("Os argumetos deberian ser maiores que cero\n");
 	usleep(2000000);
 	printf("%s\n", "Cinco argumentos");
 	printf("Number of philosophers\n");
