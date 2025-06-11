@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:02:43 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/11 17:49:07 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/11 19:59:54 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	simple_philo(unsigned int philo, unsigned int die, unsigned int eat,
 	gettimeofday(&current_time, NULL);
 	printf("segundos: %ld\nmicrosegundos: %ld\n", current_time.tv_sec,
 		current_time.tv_usec);
-	philos = malloc(sizeof(t_philosopher) * )
+	//philos = malloc(sizeof(t_philosopher) * )
 }
 void	advanced_philo(unsigned int philo, unsigned int die, unsigned int eat,
 		unsigned int sleep, unsigned int must_eat)
@@ -71,4 +71,18 @@ void	advanced_philo(unsigned int philo, unsigned int die, unsigned int eat,
 	gettimeofday(&current_time, NULL);
 	printf("segundos: %ld\nmicrosegundos: %ld\n", current_time.tv_sec,
 		current_time.tv_usec);
+}
+
+void	start_philo(int nbr_philo)
+{
+	int i;
+	
+	i = 0;
+	
+	while (i != nbr_philo)
+	{
+		pt
+		i++;
+	}
+	
 }
