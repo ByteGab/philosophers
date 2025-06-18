@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:38:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/05 16:41:55 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:31:54 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_statistics
 	unsigned int	time_sleep;
 	unsigned int	time_die;
 	// comenzo do tempo
-	unsigned int	start_time;
+	unsigned long	start_time;
 	// control do mutex
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	*death;
@@ -44,7 +44,7 @@ typedef struct s_philosopher
 	pthread_mutex_t	*fork_left;
 	pthread_mutex_t	*fork_right;
 	// a ultima vez que comeu (en microsegundos)
-	unsigned int	last_eat;
+	unsigned long	last_eat;
 	// cantas veces comeu
 	unsigned int	count_eat;
 	// punteiro a outra estructura (cambiar o nome)

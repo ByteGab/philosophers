@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:02:43 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/14 16:24:43 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/18 13:06:24 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,41 @@ void	start_forks(int nbr_philo, t_statistics *statistics)
 
 void	start_philo(t_philosopher *philo, t_statistics *statistics)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (i < statistics->nbr_philos)
 	{
 		philo[i].id = i;
 		philo[i].fork_left = &statistics->forks[i];
-		philo[i].fork_right = &statistics->forks[(i + 1) % statistics->nbr_philos];
-			// volta circular
+		philo[i].fork_right = &statistics->forks[(i + 1)
+			% statistics->nbr_philos];
+		// volta circular
 		philo[i].count_eat = 0;
-		philo[i].last_eat = 0;
+		philo[i].last_eat = statistics->start_time;
 		philo[i].statistic = statistics;
 		i++;
 	}
 	i = 0;
 	while (i < statistics->nbr_philos)
 	{
-		printf("Id %d, Fork Left %p , Fork Rigth %p , Eat %d, Last Eat %d\n",philo[i].id,philo[i].fork_left,philo[i].fork_right,philo[i].count_eat,philo[i].last_eat);
+		printf("Id %d, Fork Left %p , Fork Rigth %p , Eat %d, Last Eat %lu\n",
+			philo[i].id, philo[i].fork_left, philo[i].fork_right,
+			philo[i].count_eat, philo[i].last_eat);
 		i++;
 	}
-	
 }
 
+unsigned int	get_time(void)
+{
+	struct timeval	current_time;
+	long	time;
+
+	time = 0;
+	gettimeofday(&current_time, NULL);
+	time = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
+	return (time);
+}
 // cambiar segundos y micro a milisegundos
 void	simple_philo(unsigned int philos, unsigned int die, unsigned int eat,
 		unsigned int sleep)
@@ -73,14 +85,18 @@ void	simple_philo(unsigned int philos, unsigned int die, unsigned int eat,
 	if (!philo)
 	{
 		// liberalo
-		//return (1); // cambialo
+		// return (1); // cambialo
 	}
 	statistic.forks = malloc(philos * sizeof(pthread_mutex_t));
 	if (!statistic.forks)
 	{
 		// liberalo
-		//return (1); // cambialo
+		// return (1); // cambialo
 	}
+	statistic.start_time = get_time();
+	printf("%lu\n",statistic.start_time);
+	start_forks(philos, &statistic);
+	start_philo(philo, &statistic);
 }
 void	advanced_philo(unsigned int philos, unsigned int die, unsigned int eat,
 		unsigned int sleep, unsigned int must_eat)
@@ -101,15 +117,16 @@ void	advanced_philo(unsigned int philos, unsigned int die, unsigned int eat,
 	if (!philo)
 	{
 		// liberar todo
-		//return (1); // cambialo
+		// return (1); // cambialo
 	}
 	statistic.forks = malloc(philos * sizeof(pthread_mutex_t));
 	if (!statistic.forks)
 	{
 		// liberalo
-		//return (1); // cambialo
+		// return (1); // cambialo
 	}
+	statistic.start_time = get_time();
+	printf("%lu\n",statistic.start_time);
 	start_forks(philos, &statistic);
-	start_philo(philo,&statistic);
+	start_philo(philo, &statistic);
 }
-
