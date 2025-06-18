@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:02:43 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/18 13:06:24 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:25:12 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,19 @@ void	start_philo(t_philosopher *philo, t_statistics *statistics)
 		printf("Id %d, Fork Left %p , Fork Rigth %p , Eat %d, Last Eat %lu\n",
 			philo[i].id, philo[i].fork_left, philo[i].fork_right,
 			philo[i].count_eat, philo[i].last_eat);
+		i++;
+	}
+}
+
+void	start_thread(t_philosopher *philo)
+{
+	int i;
+
+	i = 0;
+	
+	while (i < philo->statistic->nbr_philos)
+	{
+		pthread_create(&philo[i].thread,NULL,routine,&philo[i]);
 		i++;
 	}
 }
@@ -97,6 +110,7 @@ void	simple_philo(unsigned int philos, unsigned int die, unsigned int eat,
 	printf("%lu\n",statistic.start_time);
 	start_forks(philos, &statistic);
 	start_philo(philo, &statistic);
+	start_threads(philo);
 }
 void	advanced_philo(unsigned int philos, unsigned int die, unsigned int eat,
 		unsigned int sleep, unsigned int must_eat)
