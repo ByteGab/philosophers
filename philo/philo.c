@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:02:43 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/18 16:25:12 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/21 19:17:29 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,14 @@ void	start_philo(t_philosopher *philo, t_statistics *statistics)
 	}
 }
 
-void	start_thread(t_philosopher *philo)
+void	start_threads(t_philosopher *philo)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	
 	while (i < philo->statistic->nbr_philos)
 	{
-		pthread_create(&philo[i].thread,NULL,routine,&philo[i]);
+		pthread_create(&philo[i].thread, NULL, routine, &philo[i]);
 		i++;
 	}
 }
@@ -69,7 +68,7 @@ void	start_thread(t_philosopher *philo)
 unsigned int	get_time(void)
 {
 	struct timeval	current_time;
-	long	time;
+	long			time;
 
 	time = 0;
 	gettimeofday(&current_time, NULL);
@@ -82,6 +81,7 @@ void	simple_philo(unsigned int philos, unsigned int die, unsigned int eat,
 {
 	t_statistics	statistic;
 	t_philosopher	*philo;
+	pthread_t keeper_thread;
 
 	// creo os datos
 	// t_philosopher philos;
@@ -106,11 +106,20 @@ void	simple_philo(unsigned int philos, unsigned int die, unsigned int eat,
 		// liberalo
 		// return (1); // cambialo
 	}
-	statistic.start_time = get_time();
-	printf("%lu\n",statistic.start_time);
+	statistic.death = malloc(sizeof(pthread_mutex_t));
+	if (!statistic.forks)
+	{
+		// liberalo
+		// return (1); // cambialo
+	}
+	pthread_mutex_init(statistic.death, NULL);
 	start_forks(philos, &statistic);
 	start_philo(philo, &statistic);
+	statistic.start_time = get_time();
+	printf("%lu\n", statistic.start_time);
 	start_threads(philo);
+	pthread_create(&keeper_thread, NULL, keeper_function, philo);
+	pthread_join(keeper_thread,NULL);
 }
 void	advanced_philo(unsigned int philos, unsigned int die, unsigned int eat,
 		unsigned int sleep, unsigned int must_eat)
@@ -139,8 +148,18 @@ void	advanced_philo(unsigned int philos, unsigned int die, unsigned int eat,
 		// liberalo
 		// return (1); // cambialo
 	}
-	statistic.start_time = get_time();
-	printf("%lu\n",statistic.start_time);
+	statistic.death = malloc(sizeof(pthread_mutex_t));
+	if (!statistic.forks)
+	{
+		// liberalo
+		// return (1); // cambialo
+	}
+	pthread_mutex_init(statistic.death, NULL);
 	start_forks(philos, &statistic);
 	start_philo(philo, &statistic);
+	statistic.start_time = get_time();
+	printf("%lu\n", statistic.start_time);
+	start_threads(philo);
+	pthread_create(&keeper_thread, NULL, keeper_function, philo);
+	pthread_join(keeper_thread,NULL);
 }
