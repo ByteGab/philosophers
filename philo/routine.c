@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 16:25:03 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/21 19:44:39 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/23 19:28:04 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,47 +15,38 @@
 void	*keeper_function(void *arg)
 {
 	int				i;
-	int				z;
 	t_philosopher	*philo;
 
-	i = 0;
+	
 	philo = (t_philosopher *)arg;
-
 	while (philo[0].statistic->is_dead != 1)
 	{
-		z = 0;
-		while (z < philo[0].statistic->nbr_eats)
+		usleep(1000);
+		i = 0;
+		while (i < philo[0].statistic->nbr_philos)
 		{
-			if(get_time() - philo[i].last_eat > philo[0].statistic->time_die)
+			if (get_time() - philo[i].last_eat > philo[0].statistic->time_die)
 			{
 				// imprimo
-				printf("O filosofo %d morreu 💀\n",philo[i].id);
+				printf("O filosofo %d morreu 💀\n", philo[i].id);
 				// bloqueo a morte
 				pthread_mutex_lock(philo[i].statistic->death);
 				// Poño a morte en un
 				philo[i].statistic->is_dead = 1;
 				// desbloqueo a morte
 				pthread_mutex_unlock(philo[i].statistic->death);
+				return (NULL);
 			}
-			else
-			{
-				usleep(1000);
-			}
-			z++;
+			i++;
 		}
-		
-
-		i++;
 	}
-	
+	return (NULL);
 }
 
 void	*routine(void *arg)
 {
-	int i;
 	t_philosopher *philo;
 
-	i = 0;
 	philo = (t_philosopher *)arg;
 	while (!philo->statistic->is_dead && (philo->statistic->nbr_eats == 0
 			|| philo->count_eat < philo->statistic->nbr_eats))
@@ -89,4 +80,5 @@ void	*routine(void *arg)
 		printf("O filosofo %d está durmindo\n", philo->id);
 		usleep(philo->statistic->time_sleep * 1000);
 	}
+	return (NULL);
 }
