@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:02:43 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/21 19:17:29 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:55:00 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,17 @@ void	start_forks(int nbr_philo, t_statistics *statistics)
 
 	while (i < nbr_philo)
 	{
+		// if (pthread_mutex_init(&statistics->forks[i], NULL != 0))
+		// {
+		// 	while (i >= 0)
+		// 	{
+		// 		pthread_mutex_destroy(&statistics->forks[i]);
+		// 		i--;
+		// 	}
+		// 	// free
+		// 	//return (NULL);
+		// 	return ;
+		//}
 		pthread_mutex_init(&statistics->forks[i], NULL);
 		i++;
 	}
@@ -55,7 +66,7 @@ void	start_philo(t_philosopher *philo, t_statistics *statistics)
 
 void	start_threads(t_philosopher *philo)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (i < philo->statistic->nbr_philos)
@@ -81,7 +92,7 @@ void	simple_philo(unsigned int philos, unsigned int die, unsigned int eat,
 {
 	t_statistics	statistic;
 	t_philosopher	*philo;
-	pthread_t keeper_thread;
+	pthread_t		keeper_thread;
 
 	// creo os datos
 	// t_philosopher philos;
@@ -119,7 +130,7 @@ void	simple_philo(unsigned int philos, unsigned int die, unsigned int eat,
 	printf("%lu\n", statistic.start_time);
 	start_threads(philo);
 	pthread_create(&keeper_thread, NULL, keeper_function, philo);
-	pthread_join(keeper_thread,NULL);
+	pthread_join(keeper_thread, NULL);
 }
 void	advanced_philo(unsigned int philos, unsigned int die, unsigned int eat,
 		unsigned int sleep, unsigned int must_eat)
@@ -160,6 +171,6 @@ void	advanced_philo(unsigned int philos, unsigned int die, unsigned int eat,
 	statistic.start_time = get_time();
 	printf("%lu\n", statistic.start_time);
 	start_threads(philo);
-	pthread_create(&keeper_thread, NULL, keeper_function, philo);
-	pthread_join(keeper_thread,NULL);
+	// pthread_create(&keeper_thread, NULL, keeper_function, philo);
+	// pthread_join(keeper_thread,NULL);
 }
