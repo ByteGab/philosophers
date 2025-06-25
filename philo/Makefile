@@ -1,6 +1,6 @@
 NAME            = philosopher
 
-SOURCES         = philo.c parse.c utils.c  routine.c
+SOURCES         = main.c philo.c routine.c init.c utils.c
 
 OBJECTS         = $(SOURCES:.c=.o)
 
