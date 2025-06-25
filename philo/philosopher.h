@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:38:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/25 12:19:07 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/25 16:29:26 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void				start_threads(t_philosopher *philo);
 // routine
 void				*routine(void *arg);
 void				*keeper_function(void *arg);
+int					is_philo_dead(t_philosopher *philo);
 
 #endif
