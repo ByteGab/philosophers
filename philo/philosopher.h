@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:38:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/21 19:23:33 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/25 12:19:07 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ void				advanced_philo(unsigned int philo, unsigned int die,
 // utils
 unsigned int		ft_atoui(char *str);
 unsigned int		get_time(void);
+
+// init
+void				start_forks(int nbr_philo, t_statistics *statistics);
+void				start_philo(t_philosopher *philo, t_statistics *statistics);
+void				start_threads(t_philosopher *philo);
 
 // routine
 void				*routine(void *arg);
