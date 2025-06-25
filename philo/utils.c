@@ -6,32 +6,43 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:48:28 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/05 13:03:01 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/25 12:35:14 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
+
 unsigned int	ft_atoui(char *str)
 {
-	unsigned int nbr;
-	int i;
+	unsigned int	nbr;
+	int				i;
 
 	nbr = 0;
 	i = 0;
-
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\r'
-		|| str[i] == '\n' || str[i] == '\f' || str[i] == '\v')
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\r' || str[i] == '\n'
+		|| str[i] == '\f' || str[i] == '\v')
 		i++;
-    if (str[i] == '-')
-    {
-        printf("E numero negativo\n");
+	if (str[i] == '-')
+	{
+		printf("E numero negativo\n");
 		exit(1);
-        return (-1); // cambialo
-    }
+		return (-1); // cambialo
+	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nbr = nbr * 10 + str[i] - '0';
 		i++;
 	}
 	return (nbr);
+}
+// cambiar segundos y micro a milisegundos
+unsigned int	get_time(void)
+{
+	struct timeval	current_time;
+	long			time;
+
+	time = 0;
+	gettimeofday(&current_time, NULL);
+	time = (current_time.tv_sec * 1000) + (current_time.tv_usec / 1000);
+	return (time);
 }
