@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 12:14:56 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/25 13:41:44 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/26 20:40:48 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@ void	start_philo(t_philosopher *philo, t_statistics *statistics)
         philo[i].statistic->is_dead = 0;
 		i++;
 	}
-	i = 0;
-	while (i < statistics->nbr_philos)
-	{
-		printf("Id %d, Fork Left %p , Fork Rigth %p , Eat %d, Last Eat %lu\n",
-			philo[i].id, philo[i].fork_left, philo[i].fork_right,
-			philo[i].count_eat, philo[i].last_eat);
-		i++;
-	}
+	// i = 0;
+	// while (i < statistics->nbr_philos)
+	// {
+	// 	printf("Id %d, Fork Left %p , Fork Rigth %p , Eat %d, Last Eat %lu\n",
+	// 		philo[i].id, philo[i].fork_left, philo[i].fork_right,
+	// 		philo[i].count_eat, philo[i].last_eat);
+	// 	i++;
+	// }
 }
 
 void	start_threads(t_philosopher *philo)
