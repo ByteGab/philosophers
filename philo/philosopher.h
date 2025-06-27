@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 19:38:00 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/25 16:29:26 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/27 20:34:57 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,20 @@ typedef struct s_philosopher
 	pthread_mutex_t	*fork_right;
 	// a ultima vez que comeu (en microsegundos)
 	unsigned long	last_eat;
+	pthread_mutex_t	eat_mutex;
 	// cantas veces comeu
 	unsigned int	count_eat;
 	// punteiro a outra estructura (cambiar o nome)
 	t_statistics	*statistic;
 }					t_philosopher;
 
-void				simple_philo(unsigned int philo, unsigned int die,
-						unsigned int eat, unsigned int sleep);
-void				advanced_philo(unsigned int philo, unsigned int die,
-						unsigned int eat, unsigned int sleep,
+void				simple_philo(t_statistics statistic);
+void				advanced_philo(t_statistics statistic,
 						unsigned int must_eat);
 
 // utils
 unsigned int		ft_atoui(char *str);
-unsigned int		get_time(void);
+unsigned long		get_time(void);
 
 // init
 void				start_forks(int nbr_philo, t_statistics *statistics);
