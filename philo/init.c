@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 12:14:56 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/26 20:40:48 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/27 20:56:16 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	start_philo(t_philosopher *philo, t_statistics *statistics)
 		philo[i].count_eat = 0;
 		philo[i].last_eat = statistics->start_time;
 		philo[i].statistic = statistics;
-        philo[i].statistic->is_dead = 0;
+		philo[i].statistic->is_dead = 0;
+		pthread_mutex_init(&philo[i].eat_mutex, NULL);
 		i++;
 	}
 	// i = 0;
