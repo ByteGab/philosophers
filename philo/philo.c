@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:02:43 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/28 20:03:27 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/28 22:14:42 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,7 @@ void	simple_philo(t_statistics statistic)
 	// t_philosopher philos;
 	if (statistic.nbr_philos == 0 || statistic.time_die == 0
 		|| statistic.time_eat == 0 || statistic.time_sleep == 0)
-		// cinco argumentos podo?
 		printf("Os argumetos deberian ser maiores que cero\n");
-	// statistic.nbr_philos = philos;
-	// statistic.time_die = die; // ten que ser xa en milisegundos ?
-	// statistic.time_eat = eat;
-	// statistic.time_sleep = sleep;
-	// deber ter menos de cen numeros os filos? e mentira e na folla de correciones
-	// deber ter menos de doscentos numeros as demais variables? e mentira e na folla de correciones
 	// empezo os filosofos
 	philo = malloc(statistic.nbr_philos * sizeof(t_philosopher));
 	if (!philo)
