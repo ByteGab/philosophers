@@ -1,4 +1,4 @@
-NAME            = philosopher
+NAME            = philo
 SOURCES         = main.c philo.c routine.c init.c utils.c
 
 OBJECTS         = $(SOURCES:.c=.o)
