@@ -55,14 +55,6 @@ void	start_philo(t_philosopher *philo, t_statistics *statistics)
 		pthread_mutex_init(&philo[i].eat_mutex, NULL);
 		i++;
 	}
-	// i = 0;
-	// while (i < statistics->nbr_philos)
-	// {
-	// 	printf("Id %d, Fork Left %p , Fork Rigth %p , Eat %d, Last Eat %lu\n",
-	// 		philo[i].id, philo[i].fork_left, philo[i].fork_right,
-	// 		philo[i].count_eat, philo[i].last_eat);
-	// 	i++;
-	// }
 }
 
 void	start_threads(t_philosopher *philo)
