@@ -37,38 +37,36 @@ typedef struct s_statistics
 	int				is_dead;
 }					t_statistics;
 
+/*
+-	son punteiros porque apuntan aos elementos especificos 
+	do array de forks (chequear)
+-	a ultima vez que comeu (en microsegundos)
+-	cantas veces comeu
+-	punteiro a outra estructura (cambiar o nome)
+*/
 typedef struct s_philosopher
 {
 	int				id;
-	pthread_t		thread;
-	// son punteiros porque apuntan aos elementos especificos do array de forks (chequear)
+	pthread_t		thread;	
 	pthread_mutex_t	*fork_left;
 	pthread_mutex_t	*fork_right;
-	// a ultima vez que comeu (en microsegundos)
 	unsigned long	last_eat;
 	pthread_mutex_t	eat_mutex;
-	// cantas veces comeu
 	unsigned int	count_eat;
-	// punteiro a outra estructura (cambiar o nome)
 	t_statistics	*statistic;
 }					t_philosopher;
 
-void				simple_philo(t_statistics statistic);
-void				advanced_philo(t_statistics statistic,
-						unsigned int must_eat);
-
+void	execute_philo(t_statistics statistic, unsigned int must_eat);
 // utils
 unsigned int		ft_atoui(char *str);
 unsigned long		get_time(void);
-
 // init
-void				start_forks(int nbr_philo, t_statistics *statistics);
-void				start_philo(t_philosopher *philo, t_statistics *statistics);
-void				start_threads(t_philosopher *philo);
-
+void		start_forks(int nbr_philo, t_statistics *statistics);
+void		start_philo(t_philosopher *philo, t_statistics *statistics);
+void		start_threads(t_philosopher *philo);
 // routine
-void				*routine(void *arg);
-void				*keeper_function(void *arg);
-int					is_philo_dead(t_philosopher *philo);
+void		*routine(void *arg);
+void		*keeper_function(void *arg);
+int			is_philo_dead(t_philosopher *philo);
 
 #endif
