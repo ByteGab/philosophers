@@ -38,9 +38,10 @@ int	main(int argc, char *argv[])
 		statistic.time_die = ft_atoui(argv[2]);
 		statistic.time_eat = ft_atoui(argv[3]);
 		statistic.time_sleep = ft_atoui(argv[4]);
-		simple_philo(statistic);
-		if (argc == 6)
-			advanced_philo(statistic, ft_atoui(argv[5]));
+		if (argc == 5)
+			execute_philo(statistic, 0);
+		else if (argc == 6)
+			execute_philo(statistic, ft_atoui(argv[5]));
 	}
 	else
 		return (printf("Error\n"), 0);
