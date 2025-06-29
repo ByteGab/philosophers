@@ -35,10 +35,11 @@ unsigned int	ft_atoui(char *str)
 	}
 	return (nbr);
 }
+
 // cambiar segundos y micro a milisegundos
 unsigned long	get_time(void)
 {
-	struct timeval	current_time;
+	struct timeval			current_time;
 	unsigned long			time;
 
 	time = 0;
