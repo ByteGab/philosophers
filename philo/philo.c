@@ -27,12 +27,6 @@ void	free_resources(t_statistics *statistic, t_philosopher *philo)
 	free(statistic->death);
 	free(philo);
 }
-/*
--	memset(philo, 0, statistic.nbr_philos * sizeof(t_philosopher));
--	memset(statistic.forks, 0, statistic.nbr_philos * sizeof(pthread_mutex_t));
--   memset(statistic.death, 0, statistic.nbr_philos * sizeof(pthread_mutex_t));
-*/
-
 int	init_resources(t_statistics *statistic, t_philosopher **philo)
 {
 	*philo = malloc(statistic->nbr_philos * sizeof(t_philosopher));
