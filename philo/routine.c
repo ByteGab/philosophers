@@ -53,7 +53,7 @@ int	take_forks_odd(t_philosopher *philo)
 	pthread_mutex_lock(philo->fork_right);
 	if (is_philo_dead(philo) == 1)
 	{
-		pthread_mutex_unlock(philo->fork_left);
+		pthread_mutex_unlock(philo->fork_right);
 		return (1);
 	}
 	printf("%5ld %2d has taken a fork 🍴\n", (get_time()
