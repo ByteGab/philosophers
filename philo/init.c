@@ -6,13 +6,12 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 12:14:56 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/28 22:14:30 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/30 13:10:21 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-// punteiro para que asi o cambio no queda en local
 void	start_forks(int nbr_philo, t_statistics *statistics)
 {
 	int	i;
@@ -20,24 +19,20 @@ void	start_forks(int nbr_philo, t_statistics *statistics)
 	i = 0;
 	while (i < nbr_philo)
 	{
-		// if (pthread_mutex_init(&statistics->forks[i], NULL != 0))
-		// {
-		// 	while (i >= 0)
-		// 	{
-		// 		pthread_mutex_destroy(&statistics->forks[i]);
-		// 		i--;
-		// 	}
-		// 	// free
-		// 	//return (NULL);
-		// 	return ;
-		// }
+		if (pthread_mutex_init(&statistics->forks[i], NULL) != 0)
+		{
+			while (i >= 0)
+			{
+				pthread_mutex_destroy(&statistics->forks[i]);
+				i--;
+			}
+			free(statistics->forks);
+			return ;
+		}
 		pthread_mutex_init(&statistics->forks[i], NULL);
 		i++;
 	}
 }
-/*
-calculo do garfo dereito para que sea circular e compartan o garfo con siguente
-*/
 
 void	start_philo(t_philosopher *philo, t_statistics *statistics)
 {
