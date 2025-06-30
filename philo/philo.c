@@ -27,6 +27,7 @@ void	free_resources(t_statistics *statistic, t_philosopher *philo)
 	free(statistic->death);
 	free(philo);
 }
+
 int	init_resources(t_statistics *statistic, t_philosopher **philo)
 {
 	*philo = malloc(statistic->nbr_philos * sizeof(t_philosopher));
