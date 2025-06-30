@@ -6,7 +6,7 @@
 /*   By: gafreire <gafreire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 13:48:28 by gafreire          #+#    #+#             */
-/*   Updated: 2025/06/27 20:36:39 by gafreire         ###   ########.fr       */
+/*   Updated: 2025/06/30 13:13:13 by gafreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ unsigned int	ft_atoui(char *str)
 	return (nbr);
 }
 
-// cambiar segundos y micro a milisegundos
 unsigned long	get_time(void)
 {
 	struct timeval			current_time;
