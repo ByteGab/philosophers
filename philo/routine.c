@@ -72,11 +72,11 @@ int	take_forks_odd(t_philosopher *philo)
 
 int	eat_and_sleep(t_philosopher *philo)
 {
-	printf("%5ld %2d is eating 🍝\n", (get_time()
-			- philo->statistic->start_time), philo->id);
 	pthread_mutex_lock(&philo->eat_mutex);
 	philo->last_eat = get_time();
 	pthread_mutex_unlock(&philo->eat_mutex);
+	printf("%5ld %2d is eating 🍝\n", (get_time()
+			- philo->statistic->start_time), philo->id);
 	philo->count_eat++;
 	smart_sleep(philo->statistic->time_eat, philo);
 	pthread_mutex_unlock(philo->fork_right);
