@@ -39,7 +39,8 @@ void	smart_sleep(unsigned int duration, t_philosopher *philo)
 void	*keeper_function(void *arg)
 {
 	t_philosopher	*philo;
-	unsigned int	i, done;
+	unsigned int	i;
+	unsigned int	done;
 
 	philo = (t_philosopher *)arg;
 	while (1)
@@ -50,17 +51,18 @@ void	*keeper_function(void *arg)
 		while (i < philo[0].statistic->nbr_philos)
 		{
 			pthread_mutex_lock(&philo[i].eat_mutex);
-			if (philo->statistic->nbr_eats 
-					&& philo[i].count_eat >= philo->statistic->nbr_eats)
+			if (philo->statistic->nbr_eats
+				&& philo[i].count_eat >= philo->statistic->nbr_eats)
 			{
 				done++;
 				pthread_mutex_unlock(&philo[i].eat_mutex);
 				i++;
-				continue;
+				continue ;
 			}
 			if (get_time() - philo[i].last_eat > philo->statistic->time_die)
 			{
-				printf("%5ld %2d died 💀\n", get_time() - philo->statistic->start_time, philo[i].id);
+				printf("%5ld %2d died 💀\n", get_time()
+					- philo->statistic->start_time, philo[i].id);
 				pthread_mutex_lock(philo[i].statistic->death);
 				philo[i].statistic->is_dead = 1;
 				pthread_mutex_unlock(philo[i].statistic->death);
